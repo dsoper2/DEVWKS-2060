@@ -12,7 +12,7 @@ from ucsmsdk.ucshandle import UcsHandle
 from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
 
 # Create a Login Handle and Login
-HANDLE = UcsHandle("198.18.133.91", "admin", "password")
+HANDLE = UcsHandle("13.58.22.56", "admin", "password")
 HANDLE.login()
 
 # Query the FabricLanCloud, under which VLAN Objects are inserted
@@ -26,7 +26,7 @@ VLAN = FabricVlan(
     )
 
 # Add the instantiated VLAN Object to the HANDLE
-HANDLE.add_mo(VLAN)
+HANDLE.add_mo(VLAN, modify_present=True)
 
 # Commit the HANDLE to add the VLAN to UCS Manager
 HANDLE.commit()
