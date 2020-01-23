@@ -38,19 +38,19 @@ ATTRS = ["dn", "model", "serial"]
 # Query Filters and descriptions
 Q_FILTERS = [
     {
-        'filter_exp': '(model,"UC*B-B200-M4")',
-        'filter_des': '"model matches UC*B-B200-M4"'
+        'filter_exp': '(model,"B-B200-.*")',
+        'filter_des': '"model matches regular expression B-B200-.*"'
     },
     {
-        'filter_exp': '(model,"UCSB-B200-M4", type="eq")',
-        'filter_des': '"model equals UCSB-B200-M4"'
+        'filter_exp': '(model,"UCSB-B200-M5", type="eq")',
+        'filter_des': '"model equals UCSB-B200-M5"'
     },
     {
-        'filter_exp': '(model,"UCSB-B200-M4", type="ne")',
-        'filter_des': '"model not equal UC*B-B200-M4"'
+        'filter_exp': '(model,"UCSB-B200-M5", type="ne")',
+        'filter_des': '"model not equal UC*B-B200-M5"'
     },
     {
-        'filter_exp': '(model,"ucsB-B200-m4", flag="I")',
+        'filter_exp': '(model,"ucsB-B200-M5", flag="I")',
         'filter_des': '"model matches ucsB-B200-m4 case insensitive"'
     }
 ]
@@ -60,7 +60,7 @@ for q_filter in Q_FILTERS:
     blades = HANDLE.query_classid(
         "ComputeBlade", filter_str=q_filter['filter_exp']
         )
-    print('\nUCS Regular Expression Query for ' + q_filter['filter_des'])
+    print('\nUCS Filter Query for ' + q_filter['filter_des'])
     print("  Number of blades found: " + str(len(blades)))
 
     if blades:
